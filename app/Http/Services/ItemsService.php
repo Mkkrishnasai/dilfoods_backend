@@ -42,6 +42,7 @@ class ItemsService
         $returnCode = 0;
         Log::info($command);
         exec($command, $output, $returnCode);
+        Log::info(json_encode($output));
         Log::info($this->processPythonOutput($output));
         if ($returnCode === 0) {
             return $this->processPythonOutput($output);
