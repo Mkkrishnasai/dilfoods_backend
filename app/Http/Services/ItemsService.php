@@ -40,7 +40,7 @@ class ItemsService
 
         $output = [];
         $returnCode = 0;
-
+        Log::info($command);
         exec($command, $output, $returnCode);
         Log::info($this->processPythonOutput($output));
         if ($returnCode === 0) {
