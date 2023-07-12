@@ -5,6 +5,7 @@ namespace App\Http\Services;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ItemsService
 {
@@ -41,7 +42,7 @@ class ItemsService
         $returnCode = 0;
 
         exec($command, $output, $returnCode);
-
+        Log::info($this->processPythonOutput($output));
         if ($returnCode === 0) {
             return $this->processPythonOutput($output);
         } else {
